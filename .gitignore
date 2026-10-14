@@ -1,0 +1,19 @@
+# dependências
+node_modules
+
+# build do Next
+.next
+out
+
+# scripts auxiliares e logs locais
+checar.bat
+git-preparar.bat
+git-publicar.bat
+diagnostico.txt
+git-log.txt
+
+# sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+.env*.local

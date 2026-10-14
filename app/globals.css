@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  /* acento da marca Blessy */
+  --color-marca: #d97757;
+  --color-marca-forte: #c2542f;
+  --color-marca-fundo: #a84524;
+  --color-marca-clara: #f0a98c;
+
+  /* superfícies — valores trocados pelo tema claro mais abaixo */
+  --color-base: #050506;
+  --color-painel: #0b0b0d;
+  --color-painel-alto: #121215;
+  --color-fio: rgba(255, 255, 255, 0.09);
+  --color-fio-forte: rgba(255, 255, 255, 0.16);
+  --color-texto: #f5f5f6;
+  --color-texto-2: rgba(245, 245, 246, 0.62);
+  --color-texto-3: rgba(245, 245, 246, 0.42);
+
+  --font-corpo: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serifada: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --radius-fichas: 16px;
+}
+
+/* ---------- temas ---------- */
+
+:root {
+  --base: #050506;
+  --painel: #0b0b0d;
+  --painel-alto: #121215;
+  --fio: rgba(255, 255, 255, 0.09);
+  --fio-forte: rgba(255, 255, 255, 0.16);
+  --texto: #f5f5f6;
+  --texto-2: rgba(245, 245, 246, 0.62);
+  --texto-3: rgba(245, 245, 246, 0.42);
+  --linhas: 255, 255, 255;
+  --linhas-forca: 0.09;
+  --acento: #f0a98c;
+  --acento-fundo: rgba(217, 119, 87, 0.14);
+  --acento-fio: rgba(217, 119, 87, 0.32);
+  --brilho: 0.22;
+  color-scheme: dark;
+}
+
+:root[data-tema="claro"] {
+  --base: #faf9f5;
+  --painel: #ffffff;
+  --painel-alto: #f0eee6;
+  --fio: rgba(38, 38, 37, 0.1);
+  --fio-forte: rgba(38, 38, 37, 0.18);
+  --texto: #262625;
+  --texto-2: rgba(38, 38, 37, 0.7);
+  --texto-3: rgba(38, 38, 37, 0.52);
+  --linhas: 38, 38, 37;
+  --linhas-forca: 0.07;
+  --acento: #a84524;
+  --acento-fundo: rgba(217, 119, 87, 0.12);
+  --acento-fio: rgba(168, 69, 36, 0.3);
+  --brilho: 0.07;
+  color-scheme: light;
+}
+
+html {
+  background-color: var(--base);
+}
+
+body {
+  background-color: var(--base);
+  color: var(--texto);
+  font-family: var(--font-corpo);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+::selection {
+  background-color: var(--color-marca);
+  color: #050506;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-marca);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ---------- utilitários de tema ---------- */
+
+.sup-base {
+  background-color: var(--base);
+}
+.sup-painel {
+  background-color: var(--painel);
+}
+.sup-painel-alto {
+  background-color: var(--painel-alto);
+}
+.fio {
+  border-color: var(--fio);
+}
+.fio-forte {
+  border-color: var(--fio-forte);
+}
+.txt {
+  color: var(--texto);
+}
+.txt-2 {
+  color: var(--texto-2);
+}
+.txt-3 {
+  color: var(--texto-3);
+}
+.txt-acento {
+  color: var(--acento);
+}
+
+/* ---------- animações ---------- */
+
+@keyframes anel-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes respira {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes varrer {
+  0% {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.entra {
+  animation: subir 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
